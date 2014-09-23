@@ -23,6 +23,8 @@ define(['require', 'class/dungeongine'], function(require){
 	//   - add the specified amount of health and show the health
 	//  d.health.show()
 	//   - display the health bar without changing it
+	//  d.health.hide()
+	//   - hide the health bar without changing it
 	//
 	//  d.mana.lose([int]amount)
 	//   - remove the specified amount of mana and show the health
@@ -30,6 +32,8 @@ define(['require', 'class/dungeongine'], function(require){
 	//   - add the specified amount of mana and show the health
 	//  d.mana.show()
 	//   - display the mana bar without changing it
+	//  d.mana.hide()
+	//   - hide the mana bar without changing it
 	//
 	//  d.inventory.gain([string]item, [int]amount)
 	//   - puts one (default) or more items into the inventory
