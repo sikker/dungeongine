@@ -12,7 +12,8 @@ define(function(require){
 		    g = $('#game'), 
 	        mem = {}, 
 	        inv = {}, 
-	        s = {}, 
+	        s = {},
+			j = '',
 	        ci = $('#controls .inventory')
 	        ch = $('#controls .health'),
 	        cm = $('#controls .mana'),
@@ -45,7 +46,9 @@ define(function(require){
 			cl.on('click', function(e){
 				e.preventDefault();
 				d.find('h2').text('Journal');
-				d.find('.content').html('');
+				d.find('.content').html(j);
+				d.show();
+				return;
 				g.find('.prompt').each(function(){
 					d.find('.content').append('<p>'+$(this).find('.question').text()+'</p><p> &raquo; '+$(this).find('.chosen').text()+'</p><p>&nbsp;</p>');
 				});
@@ -91,13 +94,15 @@ define(function(require){
 		self.prompt = function(question, answers, callback) {
 			var p, st, op;
 			st = g.find('.prompt:last');
+			if(st.length)
+				j = j + st.find('.question').text() + '<br> &raquo; ' + st.find('.chosen').text() + '<br><br>';
 			st.css('opacity','.7');
 			for(op=6;op>-1;op--){
 				st = st.prev();
 				if(op===0){
-					st.hide();
 					if(st.length && !cl.hasClass('shown'))
 						cl.addClass('shown').animate({'opacity':'1'});
+					st.remove();
 				}
 				st.css('opacity','.'+op);
 			}
